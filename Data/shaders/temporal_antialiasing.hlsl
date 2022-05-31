@@ -392,7 +392,7 @@ void mainCS(uint3 thread_id : SV_DispatchThreadID, uint3 group_thread_id : SV_Gr
 
     const uint2 pos_group          = group_thread_id.xy;
     const uint2 pos_group_top_left = group_id.xy * kGroupSize - kBorderSize;
-    const uint2 pos_screen         = pos_group_top_left + pos_group;
+    const uint2 pos_screen         = pos_group_top_left + pos_group + kBorderSize;
     const float2 uv                = (thread_id.xy + 0.5f) / g_resolution_rt;
 
     tex_out_rgb[thread_id.xy] = temporal_antialiasing(thread_id.xy, pos_group_top_left, pos_group, pos_screen, uv, tex);
